@@ -1,1 +1,113 @@
 /* You can add global styles to this file, and also import other style files */
+body{background-color:deeppink;}
+se-unit{
+
+  .unit-wrapper{
+    background-size:16px 16px;
+    background-repeat:  no-repeat;
+  }
+  &.artillery .unit-wrapper{
+    @extend .badge;
+    background-image:url('assets/FrenchArtBadge.png');
+
+  }
+  &.cavalry .unit-wrapper.French{
+    background-image:url('assets/FrenchCavBadge.png');
+    @extend .badge;
+
+  }
+
+  &.cavalry .unit-wrapper.AngloAllied{
+    background-image:url('assets/AngCavBadge.png');
+    @extend .badge;
+
+  }
+  &.infantry .unit-wrapper{
+    background-image:url('assets/FrenchInfBadge.png');
+    @extend .badge;
+
+  }
+  color:black !important;
+  font-size:14px;
+  .corner{
+    position:absolute;
+    font-size:14px;
+  }
+}
+
+se-unit{
+  &.badge{
+    background-size:16px 16px;
+    background-repeat:  no-repeat;
+  }
+  &.artillery{
+    @extend .badge;
+    background-image:url('assets/FrenchArtBadge.png');
+
+  }
+  &.cavalry{
+    background-image:url('assets/FrenchCavBadge.png');
+    @extend .badge;
+
+  }
+  &.inf{
+    background-image:url('assets/FrenchInfBadge.png');
+    @extend .badge;
+
+  }
+  height: 32px;
+  .unit-wrapper {
+    border: 3px solid;
+    border-color: #ccc #333 #333 #ccc;
+    display: inline-block;
+    margin: 0 10px;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    background-color: white;
+    color: black;
+    .corner {
+      position: absolute;
+      font-size: 10px;
+    }
+    .mid {
+      font-size: 10px;
+      @extend .corner;
+      top: 10px;
+      left: 6px;
+    }
+    .ul {
+      @extend .corner;
+      top: 0px;
+      left: 0px;
+    }
+    .ur {
+      @extend .corner;
+      top: 0px;
+      right: 0px;
+    }
+    .ll {
+      @extend .corner;
+      bottom: 0px;
+      left: 0px;
+    }
+    .lr {
+      @extend .corner;
+      bottom: 0px;
+      right: 0px;
+    }
+  }
+  .unit-num{
+    display: inline-block;
+    width:38px;
+    height:38px;
+  }
+}
+.clear{
+  clear:both;
+}
+
+se-unit .unit-wrapper{
+  color:black;
+  background-color:white;
+}

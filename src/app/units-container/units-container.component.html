@@ -1,0 +1,9 @@
+<p>
+  units-container works!
+
+  {{ scenario.description }}
+ <input [(ngModel)]="scenario.description"> {{ wuv }}
+</p>
+<button (click)="publish()">publish</button>
+<p></p>
+<se-unit *ngFor="let unit of scenario.units" [ngClass]="unit.class" [unit]="unit"></se-unit>
