@@ -4,6 +4,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class BackendService {
 
+  public url : string;
   constructor(private http: Http) { }
 
   storeScenario(id, data,callback){
@@ -12,7 +13,7 @@ export class BackendService {
     const headers = new Headers;
     headers.append('Content-Type', 'application/json');
     let jsonData = JSON.stringify(data);
-    return this.http.put('/rest/maps/'+id, jsonData)
+    return this.http.put('/wargame/custom-scenario/'+this.url, jsonData)
       .subscribe(
         (data: any) => {
           console.log(data);
@@ -28,7 +29,7 @@ export class BackendService {
 
     debugger;
     headers.append('Content-Type', 'application/json');
-    return this.http.get('/wargame/custom-scenario/6e3518f110c0b215b6b6ab8d691cb7cb')
+    return this.http.get('/wargame/custom-scenario/'+this.url)
       .map((response: Response) => {
       debugger;
         const data = response.json();
