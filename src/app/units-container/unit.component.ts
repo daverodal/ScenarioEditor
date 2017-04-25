@@ -13,12 +13,12 @@ export class UnitComponent implements OnInit {
   ngOnInit() {
   }
 
-  add(){
+  add() {
     this.unit.num++;
   }
 
-  remove(){
-    if(this.unit.num > 0){
+  remove() {
+    if (this.unit.num > 0) {
       this.unit.num--;
     }
   }

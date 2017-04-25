@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { UnitsContainerComponent } from './units-container/units-container.component';
 import { UnitComponent } from './units-container/unit.component';
-import {BackendService} from "./backend.service";
+import {BackendService} from './backend.service';
 
 @NgModule({
   declarations: [

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {BackendService} from "./backend.service";
+import {BackendService} from './backend.service';
 
 @Component({
   selector: 'se-root',
@@ -7,9 +7,9 @@ import {BackendService} from "./backend.service";
   styles: []
 })
 export class AppComponent {
-  id : string;
+  id: string;
   title = 'se works!';
-  constructor(private be : BackendService){
+  constructor(private be: BackendService) {
     debugger;
     this.id = window.location.pathname;
     be.url = this.id;
