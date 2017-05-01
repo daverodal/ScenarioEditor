@@ -1,31 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-body{background-color:deeppink;}
+body{background-color:deeppink;
+  label{
+    font-size:16px;;
+  }
+}
 se-unit{
 
   .unit-wrapper{
     background-size:16px 16px;
     background-repeat:  no-repeat;
-  }
-  &.artillery .unit-wrapper{
-    @extend .badge;
-    background-image:url('assets/FrenchArtBadge.png');
-
-  }
-  &.cavalry .unit-wrapper.French{
-    background-image:url('assets/FrenchCavBadge.png');
-    @extend .badge;
-
-  }
-
-  &.cavalry .unit-wrapper.AngloAllied{
-    background-image:url('assets/AngCavBadge.png');
-    @extend .badge;
-
-  }
-  &.infantry .unit-wrapper{
-    background-image:url('assets/FrenchInfBadge.png');
-    @extend .badge;
-
   }
   color:black !important;
   font-size:14px;
@@ -36,27 +19,34 @@ se-unit{
 }
 
 se-unit{
+
   &.badge{
-    background-size:16px 16px;
+    background-size:14px 14px;
     background-repeat:  no-repeat;
   }
-  &.artillery{
-    @extend .badge;
-    background-image:url('assets/FrenchArtBadge.png');
+  height: 38px;
 
+  .unit .counterWrapper{
+    border: solid black 1px;
+    height: 14px;
+    .counter{
+      background-size: 14px;
+      height: 14px;
+      width:14px;
+      background-repeat: no-repeat;
+      border-right:1px solid black;
+    }
   }
-  &.cavalry{
-    background-image:url('assets/FrenchCavBadge.png');
-    @extend .badge;
-
-  }
-  &.inf{
-    background-image:url('assets/FrenchInfBadge.png');
-    @extend .badge;
-
-  }
-  height: 32px;
   .unit-wrapper {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    * {
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+    }
+
     border: 3px solid;
     border-color: #ccc #333 #333 #ccc;
     display: inline-block;
@@ -68,12 +58,12 @@ se-unit{
     color: black;
     .corner {
       position: absolute;
-      font-size: 10px;
+      font-size: 13px;
     }
     .mid {
       font-size: 10px;
       @extend .corner;
-      top: 10px;
+      top: 8px;
       left: 6px;
     }
     .ul {
@@ -88,12 +78,12 @@ se-unit{
     }
     .ll {
       @extend .corner;
-      bottom: 0px;
+      bottom: -2px;
       left: 0px;
     }
     .lr {
       @extend .corner;
-      bottom: 0px;
+      bottom: -2px;
       right: 0px;
     }
   }
@@ -110,4 +100,64 @@ se-unit{
 se-unit .unit-wrapper{
   color:black;
   background-color:white;
+}
+se-unit {
+  se-unit-editor .panel {
+    .left-col{
+      text-align:right;
+      input{
+        text-align:right;
+      }
+    }
+    .center-col{
+      text-align:center;
+    }
+    .right-col{
+      text-align:left;
+    }
+    .corner {
+      font-size: 20px;
+    }
+    input{
+      margin-bottom: 10px;
+      width:64px;
+
+    }
+    .unit .counterWrapper{
+      border: solid black 1px;
+      height: 28px;
+      .counter{
+        background-size: 27px;
+        height: 28px;
+        width:28px;
+        background-repeat: no-repeat;
+        border-right:1px solid black;
+      }
+    }
+
+    border: 10px solid #cccccc;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    left:0px;
+    width: 100%;
+    max-width:900px;
+    background: white;
+    z-index: 1;
+
+    .unit-wrapper {
+      border: 3px solid;
+      border-color: #ccc #333 #333 #ccc;
+      display: inline-block;
+      margin: 0 10px;
+      width: 64px;
+      height: 64px;
+      position: relative;
+      background-color: white;
+      color: black;
+      background-size: 32px 32px;
+    }
+  }
 }

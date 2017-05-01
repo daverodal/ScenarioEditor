@@ -7,6 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class UnitComponent implements OnInit {
 
+  @Input() parent: any;
   @Input() unit: any;
   constructor() { }
 
@@ -15,6 +16,10 @@ export class UnitComponent implements OnInit {
 
   add() {
     this.unit.num++;
+  }
+
+  clone() {
+    this.parent.clone(this.unit);
   }
 
   remove() {

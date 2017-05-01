@@ -8,10 +8,9 @@ import {BackendService} from './backend.service';
 })
 export class AppComponent {
   id: string;
-  title = 'se works!';
+  title = 'Scenario Editor';
   constructor(private be: BackendService) {
-    debugger;
-    this.id = window.location.pathname;
+    this.id = window.location.pathname.replace(/^.*\//, '');
     be.url = this.id;
   }
 }

@@ -1,11 +1,17 @@
 <div>
-  <div class="unit-wrapper" [ngClass]="unit.nationality">
+  <div class="unit-wrapper unit" [ngClass]="[unit.class,unit.nationality]">
+    <div class="counterWrapper">
+      <div class="counter"></div>
+    </div>
     <div class="ur">{{unit.range > 1 ? unit.range: ''}}</div>
-    <div class="ll">{{unit.combat}}</div>
+    <div class="ll">{{unit.combat}} </div>
     <div class="lr">{{unit.movement}}</div>
   </div>
   <div class="unit-num">X {{unit.num}}</div>
   <button (click)="add()">+</button>
   <button (click)="remove()">-</button>
+  <button (click)="clone()">Clone</button>
+
+  <se-unit-editor [unit]="unit" ></se-unit-editor>
 
 </div>

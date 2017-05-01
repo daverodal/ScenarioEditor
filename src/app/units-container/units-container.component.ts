@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Unit} from './unit';
 import {BackendService} from '../backend.service';
+import * as _ from "lodash";
 
 @Component({
   selector: 'se-units-container',
@@ -9,32 +10,42 @@ import {BackendService} from '../backend.service';
 })
 export class UnitsContainerComponent implements OnInit {
 
-  wuv = 'jslsj';
   scenario: any = {};
   units: any[] = [];
+  nonStandard: Object = {};
+  nonStandardKeys: any[] = [];
 
   constructor(private backendService: BackendService) {
-    this.units.push(new Unit('cav', 'cav', 3, 7, 3));
+  }
+
+  clone(unit: any) {
+    const newUnit = Object.assign({}, unit);
+    this.scenario.units.push(newUnit);
   }
 
   ngOnInit() {
     this.backendService.getScenario('jsj')
       .subscribe(
         (scenario: any) => {
-          this.wuv = scenario.description;
+
           this.scenario = scenario;
-          debugger;
-          console.log(scenario);
+          const nonstandard = _.pickBy(scenario, (prop, key: string) => {
+            return !['description', 'longDescription', 'id', 'sName', 'units'].includes(key);
+          });
+          this.nonStandard = nonstandard;
+          this.nonStandardKeys = Object.keys(nonstandard);
         },
         (data: any) => {
-          console.log('error');
         }
       );
   }
 
+  cancel() {
+    window.location.href = document.referrer;
+  }
+
   publish() {
-    this.backendService.storeScenario(1, this.scenario.units, () => {
-    });
-    console.log(this.scenario.units + '🌽');
+    this.backendService.storeScenario(1, this.scenario);
+    console.log(this.scenario.units);
   }
 }
