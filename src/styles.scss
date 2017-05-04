@@ -121,7 +121,9 @@ se-unit {
     input{
       margin-bottom: 10px;
       width:64px;
-
+      &.wide-input{
+        width:164px;
+      }
     }
     .unit .counterWrapper{
       border: solid black 1px;
