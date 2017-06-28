@@ -1,0 +1,33 @@
+<button (click)="show = !show">edit</button>
+<div class="panel container" *ngIf="show">
+  <div class="row">
+    <div class="left-col col-xs-5">
+      <button (click)="unit.class='infantry'">i</button>
+      <button (click)="unit.class='cavalry'">c</button>
+      <button (click)="unit.class='artillery'">a</button>
+      <button (click)="unit.class='horseartillery'">h a</button>
+      <input class="unit-class" [(ngModel)]="unit.class"> type<br>
+      <input [(ngModel)]="unit.combat"> combat
+
+    </div>
+    <div class="middle-col col-xs-2">
+      <div class="unit-wrapper unit" [ngClass]="[unit.class,unit.nationality]">
+        <div class="counterWrapper">
+          <div class="counter"></div>
+          <div class="fa fa-flag"></div>
+        </div>
+        <p class="range ur">{{unit.range > 1 ? unit.range: ''}}</p>
+        <div class="ll">{{unit.combat}}</div>
+        <div class="lr">{{unit.movement}}</div>
+      </div>
+    </div>
+    <div class="right-col col-xs-5">
+      range <input [(ngModel)]="unit.range"><br>
+      movement <input [(ngModel)]="unit.movement">
+    </div>
+  </div>
+  <div *ngFor="let key of nonStandardKeys" class="row">
+    <div class="left-col col-xs-6" for="name">{{ key }}</div>
+    <input type="text"[(ngModel)]="unit[key]" class="col-xs-6 right-col wide-input" id="name">
+  </div>
+</div>
