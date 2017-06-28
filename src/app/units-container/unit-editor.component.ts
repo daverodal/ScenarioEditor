@@ -11,6 +11,7 @@ export class UnitEditorComponent implements OnInit {
   show = false;
   nonStandard;
   nonStandardKeys: any[] = [];
+  deploy = false;
   @Input() unit: any;
   constructor() { }
 
@@ -18,7 +19,6 @@ export class UnitEditorComponent implements OnInit {
     const nonstandard = _.pickBy(this.unit, (prop, key: string) => {
       return !['num', 'combat', 'movement', 'range', 'class'].includes(key);
     });
-    debugger;
     this.nonStandard = nonstandard;
     this.nonStandardKeys = Object.keys(nonstandard);
   }

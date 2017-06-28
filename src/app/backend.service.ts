@@ -14,23 +14,20 @@ export class BackendService {
 
     const headers = new Headers;
     headers.append('Content-Type', 'application/json');
-    data.units = _.filter(data.units, (o: any) => o.num > 0)
+    data.units = _.filter(data.units, (o: any) => o.num > 0);
     const jsonData = JSON.stringify(data);
     return this.http.put('/wargame/custom-scenario/' + this.url + '/' + this.sName, jsonData, {headers: headers})
       .subscribe(
         (myData: any) => {
-          console.log(myData);
           window.location.href = document.referrer;
         },
         (myData: any) => {
-          console.log('error');
         }
       );
   }
 
   getScenario(id) {
     const headers = new Headers;
-    console.log(this.url);
 
     headers.append('Content-Type', 'application/json');
     return this.http.get('/wargame/custom-scenario/' + this.url)

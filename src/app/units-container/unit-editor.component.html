@@ -30,4 +30,7 @@
     <div class="left-col col-xs-6" for="name">{{ key }}</div>
     <input type="text"[(ngModel)]="unit[key]" class="col-xs-6 right-col wide-input" id="name">
   </div>
+  <div *ngIf="deploy" class="row">
+    <div class="left-col col-xs-6" for="name">reinforceTurn</div>
+    <input type="text"[(ngModel)]="unit['reinforceTurn']" class="col-xs-6 right-col wide-input" id="name">  </div>
 </div>

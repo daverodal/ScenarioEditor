@@ -32,6 +32,15 @@ export class UnitsContainerComponent implements OnInit {
           const nonstandard = _.pickBy(scenario, (prop, key: string) => {
             return !['description', 'longDescription', 'id', 'sName', 'units'].includes(key);
           });
+          console.log(this.scenario.units);
+          this.scenario.units = _.map(scenario.units, (o: any) => {
+            if (o.reinforceTurn === undefined) {
+              o.reinforceTurn = 0;
+            }
+            return o;
+          });
+          console.log(this.scenario.units);
+
           this.nonStandard = nonstandard;
           this.nonStandardKeys = Object.keys(nonstandard);
         },
@@ -45,7 +54,12 @@ export class UnitsContainerComponent implements OnInit {
   }
 
   publish() {
+    this.scenario.units = _.map(this.scenario.units, (o: any) => {
+      if (o.reinforceTurn == 0) {
+        o.reinforceTurn = undefined;
+      }
+      return o;
+    });
     this.backendService.storeScenario(1, this.scenario);
-    console.log(this.scenario.units);
   }
 }
