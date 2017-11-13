@@ -1,5 +1,8 @@
 <button (click)="show = !show">edit</button>
 <div class="panel container" *ngIf="show">
+  <div class="close-row">
+    <i (click)="show = !show" class="close-symbol fa fa-times"></i>
+  </div>
   <div class="row">
     <div class="left-col col-xs-5">
       <button (click)="unit.class='infantry'">i</button>
@@ -27,10 +30,12 @@
     </div>
   </div>
   <div *ngFor="let key of nonStandardKeys" class="row">
-    <div class="left-col col-xs-6" for="name">{{ key }}</div>
-    <input type="text"[(ngModel)]="unit[key]" class="col-xs-6 right-col wide-input" id="name">
+    <div class="left-col col-xs-6" for="name" *ngIf="key !== 'reinforceTurn'">{{ key }}</div>
+    <input type="checkbox" (click)="iClick(unit)" [(ngModel)]="unit[key]" *ngIf="key === 'deployed'">
+    <input type="text"[(ngModel)]="unit[key]" class="col-xs-6 right-col wide-input" *ngIf="key !== 'reinforceTurn' && key !== 'deployed'">
   </div>
-  <div *ngIf="deploy" class="row">
-    <div class="left-col col-xs-6" for="name">reinforceTurn</div>
-    <input type="text"[(ngModel)]="unit['reinforceTurn']" class="col-xs-6 right-col wide-input" id="name">  </div>
+  <div class="row " *ngIf="unit.reinforceTurn">
+    <div class="left-col col-xs-6" for="name">Reinforce Turn</div>
+    <input type="text"[(ngModel)]="unit.reinforceTurn" class="col-xs-6 right-col wide-input"  >
+  </div>
 </div>

@@ -6,7 +6,8 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "/Users/david/game-dispatcher/public/assets/ng-4",
+      "outDirr": "dist",
       "assets": [
         "assets",
         "favicon.ico"

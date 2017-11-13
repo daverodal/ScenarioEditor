@@ -1,8 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
-body{background-color:deeppink;
-  label{
-    font-size:16px;;
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+body {
+  background-color: deeppink;
+  label {
+    font-size: 16px;;
   }
+  .close-row {
+    text-align: right;
+    .close-symbol {
+      color: #999;
+    }
+  }
+}
+.red {
+  color:red;
 }
 se-unit{
 
@@ -96,6 +108,7 @@ se-unit{
 .clear{
   clear:both;
 }
+
 
 se-unit .unit-wrapper{
   color:black;

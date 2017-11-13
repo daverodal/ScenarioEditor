@@ -11,10 +11,22 @@ export class UnitEditorComponent implements OnInit {
   show = false;
   nonStandard;
   nonStandardKeys: any[] = [];
-  deploy = false;
   @Input() unit: any;
   constructor() { }
 
+  iClick (unit) {
+    if (unit.deployed) {
+      console.log("This part! ");
+      console.log(unit.reinforceTurn);
+      if (unit.reinforceTurn === undefined) {
+        unit.reinforceTurn = 1;
+        console.log(unit.reinforceTurn);
+      }
+    } else {
+      delete unit.reinforceTurn;
+    }
+    console.log("i click "+unit.deployed);
+  }
   ngOnInit() {
     const nonstandard = _.pickBy(this.unit, (prop, key: string) => {
       return !['num', 'combat', 'movement', 'range', 'class'].includes(key);

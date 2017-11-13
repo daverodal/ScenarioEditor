@@ -8,11 +8,18 @@
   <textarea type="text"[(ngModel)]="scenario.longDescription" class="form-control" id="longname"></textarea>
 </div>
 <h5>Non standard settings </h5>
+<button (click)="addProperty()"><i class="fa fa-plus"></i></button>
+<input *ngIf="addKey" [(ngModel)]="newKey">
+<input *ngIf="addKey" [(ngModel)]="newValue">
+<button *ngIf="addKey" (click)="saveProperty()">Save</button>
 <div *ngFor="let key of nonStandardKeys" class="form-group">
-  <label for="name">{{ key }}</label>
+  <label for="name">
+    {{ key }}   <button (click)="deleteProperty(key)"><i class="fa fa-times red"></i></button>
   <input type="text"[(ngModel)]="scenario[key]" class="form-control" id="name">
+  </label>
 </div>
-<button (click)="publish()">publish</button>
+<button class="btn btn-primary" (click)="publish()">publish</button>
 <button (click)="cancel()">cancel</button>
+<button class="btn btn-primary" (click)="new()">New Unit</button>
 <p></p>
 <se-unit *ngFor="let unit of scenario.units" [parent]="this" [ngClass]="unit.class" [unit]="unit"></se-unit>

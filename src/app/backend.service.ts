@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Headers, Http, Response} from '@angular/http';
 import 'rxjs/Rx';
-import * as _ from "lodash";
+import * as _ from 'lodash';
 
 @Injectable()
 export class BackendService {
@@ -15,6 +15,14 @@ export class BackendService {
     const headers = new Headers;
     headers.append('Content-Type', 'application/json');
     data.units = _.filter(data.units, (o: any) => o.num > 0);
+    data.units = _.map(data.units, (unit: any) => {
+      unit.movement = unit.movement - 0;
+      unit.combat = unit.combat - 0;
+      unit.range = unit.range - 0;
+      unit.forceId = unit.forceId - 0;
+      unit.num = unit.num - 0;
+      return unit;
+    });
     const jsonData = JSON.stringify(data);
     return this.http.put('/wargame/custom-scenario/' + this.url + '/' + this.sName, jsonData, {headers: headers})
       .subscribe(
